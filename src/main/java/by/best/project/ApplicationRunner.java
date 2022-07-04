@@ -17,23 +17,21 @@ public class ApplicationRunner {
         System.setProperty("webdriver.chrome.driver", args[0]);
 
         WebDriver driver = DriverSettings.setUpAndGetDriver();
-        driver.get("http://mail.ru");
+        driver.get("https://row2.vfsglobal.com/PolandBelarus-Appointment/Account/RegisteredLogin?q=shSA0YnE4pLF9Xzwon/x/ASnHZRMROGDyz5YljrTPrmD7weWKDzHm/9+x4kyou3T7EbygDK+7ECJT8O+dWpxGw==");
         By findBy = By.className(NEWS_MAIN_TITLE);
         WebDriverWait wait = DriverSettings.getWait();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(findBy)));
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(findBy)));
         String text = driver.findElement(findBy).getText();
         System.out.println(text);
         sleepALot();
 
-        driver.get("https://www.radiokot.ru/forum/ucp.php?mode=login");
-        driver.findElement(By.xpath("//*[@id=\"wrapcentre\"]/form/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[2]/input")).sendKeys("LOGIN");
+        driver.get("https://row2.vfsglobal.com/PolandBelarus-Appointment/Account/RegisteredLogin?q=shSA0YnE4pLF9Xzwon/x/ASnHZRMROGDyz5YljrTPrmD7weWKDzHm/9+x4kyou3T7EbygDK+7ECJT8O+dWpxGw==");
+        driver.findElement(By.xpath("//*[@id=\"EmailId\"]")).sendKeys("LOGIN");
         sleepABit();
-        driver.findElement(By.xpath("//*[@id=\"wrapcentre\"]/form/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/input")).sendKeys("PASSWORD");
+        driver.findElement(By.xpath("//*[@id=\"Password\"]")).sendKeys("PASSWORD");
         sleepABit();
-        driver.findElement(By.xpath("//*[@id=\"wrapcentre\"]/form/table/tbody/tr[2]/td[2]/table/tbody/tr[3]/td[2]/input")).click();
+        driver.findElement(By.xpath("//*[@id=\"recaptcha-anchor\"]/div[1]")).click();
         sleepABit();
-        driver.findElement(By.xpath("//*[@id=\"wrapcentre\"]/form/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td[2]/input")).click();
+        driver.findElement(By.xpath("//*[@id=\"btnSubmit\"]")).click();
         sleepABit();
 
         driver.quit();
